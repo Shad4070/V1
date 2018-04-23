@@ -1,0 +1,41 @@
+<div class="container">
+  <h1>Tareas</h1>
+  <form role="form" ng-submit="addTarea()">
+    <div class="row">
+      <div class="input-group">
+        <input type="text" ng-model="tarea" placeholder="Que Tarea Quieres Guardar?" class="form-control">
+        <span class="input-group-btn">
+          <input type="submit" class="btn btn-primary" value="Añadir">
+        </span>
+      </div>
+    </div>
+  </form>
+  <br/>
+
+  
+  <form ng-show="formVisibility" ui-sortable ng-model="tareas">
+  <p class="input-group" ng-repeat="tarea in tareas" style="padding: 5px 10px; cursor:move;">
+    <form>
+    <input type="text" ng-model="tarea.Tarea" class="form-control">
+    <span class="input-group-btn">
+      <button class="btn btn-danger" ng-click="eliminarTarea($index)" aria-label="Eliminar">X</button>
+      <button class="btn btn-success" ng-click="Completar($index)">Terminada</button>
+    </span>
+  </form>
+  </p>
+  </form>
+  <br/>
+
+  <h1 ng-show="formVisibility"> Tareas Completadas</h1>
+  <form ng-show="formVisibility" ng-model="completas">
+  <p class="input-group" ng-repeat="completas in completas">
+  <form>
+    <input type="text" class="form-control" ng-model="completas.Tarea">
+    <span class="input-group-btn">
+      <button class="btn btn-danger" ng-click="eliminarCompletas($index)" aria-label="Eliminar">X</button>
+      <button class="btn btn-warning" ng-click="Reactivar($index)">Reactivar</button>
+    </span>
+  </form> 
+    </p>
+  </form>
+  </div>
